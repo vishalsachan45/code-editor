@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real-Time Editor</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script defer type="text/javascript" src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/split.js/1.0.0/split.min.js" integrity="sha512-tTsZnBXEzNdEaqUO9Ok8fUofS73xieiBa54pD/sxOSvayIgItM9MmEM0CnUjA13LDnJT22sfwmjf20+Bo2174g==" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container split">
+        <textarea id="htmlCode"  placeholder="Type HTML code here" spellcheck="false" oninput="update(0)" onkeydown="handleTabKey(event, 0)"></textarea>
+        <textarea id="cssCode"  placeholder="Type CSS code here" spellcheck="false" oninput="update(0)" onkeydown="handleTabKey(event, 1)"></textarea>
+        <textarea id="javascriptCode" spellcheck="false" placeholder="Type JavaScript code here" oninput="update(0)" onkeydown="handleTabKey(event, 2)"></textarea>
+        <div class="editor-buttons">
+            <button onclick="copyToClipboard()">Copy</button>
+            <button onclick="createDownloadableFile()">Create Downloadable File</button>
+            <button id="lockUnlock" onclick="toggleLock()">Lock</button>
+        </div>
+    </div>
+    <div class="iframe-container split">
+        <iframe id="viewer"></iframe>
+    </div>
+    <!-- Hidden textarea to store copied content -->
+    <textarea id="copyBuffer" style="display: none;"></textarea>
+</body>
+</html>
